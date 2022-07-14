@@ -1,7 +1,7 @@
 # graphic-calculator
 This programm plots different analytically given curves   
 Example of work   
-You paste the expression in the console 
+You paste the expression in the console   
 Это приложение рисует аналитически заданные кривые любого типа   
 Пример работы   
 Выражение вводится в консоль   
