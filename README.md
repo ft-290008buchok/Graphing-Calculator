@@ -1,6 +1,7 @@
 # graphic-calculator
 This programm plots different analytically given curves
-< >< >Example of work
+<>
+Example of work
 You paste the expression in the console
 ![изображение](https://user-images.githubusercontent.com/71639489/179046847-5df85e42-d274-4c6c-a367-a8872d840508.png)
 And it would be ploted in graphic window
