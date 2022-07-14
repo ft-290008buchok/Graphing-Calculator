@@ -1,4 +1,4 @@
-#define _USE_MATH_DEFINES
+п»ї#define _USE_MATH_DEFINES
 #include<iostream>
 #include<ctime>
 #include<string>
@@ -8,31 +8,31 @@
 
 using namespace sf;
 
-const float lines_num = 5;     //максимальное число делений от 0 до конца оси
-float scale = 10;              //масштаб поумолчанию
-bool zoom = true;              //флаг процесса масштабирования (true, чтобы был нарисован первый кадр)
-float zoom_speed = 0.125;      //от 0 до 1 (скорость масштабирования)
-unsigned int scaling_started;  //время начала масштабирования
-unsigned int time_gone;        //время, прошедшее с начала масштабирования
+const float lines_num = 5;     //maximum number of divisions from 0 to the end of the axis
+float scale = 10;              //default scale
+bool zoom = true;              //scaling progress flag (true to draw the first frame)
+float zoom_speed = 0.125;      //0 to 1 (zoom speed)
+unsigned int scaling_started;  //zoom start time
+unsigned int time_gone;        //time elapsed since scaling started
 
-VideoMode vector = VideoMode::getDesktopMode(); //разрешение экрана
+VideoMode vector = VideoMode::getDesktopMode(); //screen deffinition
 int h = vector.height - 100, w = vector.width - 100;
 VideoMode vect = VideoMode(w, h);
 Event evvent;
 
-float step = h / scale / 2.0;                 //длина деления системы координат в пикселях
-float p = int((scale - 1) / lines_num + 1);   //математическая длина деления системы координат
-int pix_step = 2;                             //расстояние в пикселях между соседними отсчётами графика
-int steps_num = h / pix_step;                 //общее число отчсётов
-int definition = 1000;                        //число шагов перебора значений поверхности при каждом отсчёте
+float step = h / scale / 2.0;                 //coordinate system division length in pixels
+float p = int((scale - 1) / lines_num + 1);   //mathematical coordinate system division length
+int pix_step = 2;                             //distance in pixels between adjacent chart readings
+int steps_num = h / pix_step;                 //total number of readings
+int definition = 1000;                        //number of steps for enumeration of surface values вЂ‹вЂ‹at each reading
 
 
 
-//центр системы координат
+//С†РµРЅС‚СЂ СЃРёСЃС‚РµРјС‹ РєРѕРѕСЂРґРёРЅР°С‚
 struct centre {
 public:
 	float x = h / 2.0;
-	float y = h / 2.0;
+	float y = h / 2.0; coordinate system center
 };
 centre c;
 
@@ -50,29 +50,29 @@ int main()
 
 	
 
-	//форматирование строки
-	//получение функциии 2-х переменных
+	//string formatting
+	//getting a function of 2 variables
 	s = prepare_str(s);
 
-	//предобработка строки выражения
+	//expression string preprocessing
 	processing_expr(s);
 
 	Vector2i mouse_pos;
 	ContextSettings settings;
 	settings.antialiasingLevel = 8;
-	// Объект, который, собственно, является главным окном приложения
+
 	RenderWindow window(vect, "Math plot", Style::Default, settings);
 	window.setVerticalSyncEnabled(true);
 
-	// Главный цикл приложения. Выполняется, пока открыто окно
+	// The main loop of the application. Runs while the window is open
 	while (window.isOpen())
 	{
-		// Обрабатываем очередь событий в цикле
+		// Processing the event queue in a loop
 		while (window.pollEvent(evvent))
 		{
-			// Пользователь нажал на «крестик» и хочет закрыть окно?
+
 			if (evvent.type == Event::Closed) {
-				// тогда закрываем его
+
 				window.close();
 				return 0;
 			}
@@ -81,13 +81,13 @@ int main()
 				scaling_started = clock();
 				zoom = true;
 			}
-			// Отрисовка окна
+			// Window rendering
 			if (zoom) {
 				draw_coordinate_system(window);
 
 				window.display();
 			}
-			//сохранение масштаба обьектов при изменении размеров окна
+			//maintaining the scale of objects when resizing the window
 			if (evvent.type == Event::Resized)
 			{
 				FloatRect view(0, 0, evvent.size.width, evvent.size.height);
@@ -101,7 +101,7 @@ int main()
 				window.display();
 			}
 		}
-		time_gone = clock() - scaling_started; //мс
+		time_gone = clock() - scaling_started; //РјСЃ
 		if (time_gone > 100 && zoom) {
 			draw_curve(window);
 			zoom = false;
@@ -119,7 +119,7 @@ void draw_coordinate_system(RenderWindow &window) {
 	Font font;
 	font.loadFromFile("arial.ttf");
 	Text text("", font, 15);
-	//правый нижний квадрант
+	//right lower quadrant
 	//==================================
 	line.setSize(Vector2f(1.f, h - c.y));
 	for (float i = 0; x_pos < h; i += p) {
@@ -162,7 +162,7 @@ void draw_coordinate_system(RenderWindow &window) {
 		window.draw(text);
 		y_pos += step * p;
 	}
-	//левый верхний квадрант
+	//upper left quadrant
 	//==================================
 	x_pos = c.x, y_pos = c.y;
 	line.setSize(Vector2f(1.f, c.y));
@@ -206,7 +206,7 @@ void draw_coordinate_system(RenderWindow &window) {
 		window.draw(text);
 		y_pos -= step * p;
 	}
-	//левый нижний квадрант
+	//lower left quadrant
 	//==================================
 	x_pos = c.x, y_pos = c.y;
 	line.setSize(Vector2f(1.f, h - c.y));
@@ -223,7 +223,7 @@ void draw_coordinate_system(RenderWindow &window) {
 		window.draw(line);
 		y_pos += step * p;
 	}
-	//правый верхний квадрант
+	//right upper quadrant
 	//==================================
 	x_pos = c.x, y_pos = c.y;
 	line.setSize(Vector2f(1.f, c.y));
@@ -240,7 +240,7 @@ void draw_coordinate_system(RenderWindow &window) {
 		window.draw(line);
 		y_pos -= step * p;
 	}
-	//сохранение границ
+	//maintaining borders
 	//==================================
 	if (c.x > h) {
 		RectangleShape r(Vector2f(h, h));
@@ -270,7 +270,7 @@ std::string str(float n) {
 }
 
 
-//фокусное масштабирование
+
 void focal_scaling(RenderWindow &window, int delta) {
 	window.clear();
 	Vector2i mouse_pos = Mouse::getPosition(window);
@@ -343,15 +343,15 @@ std::string prepare_str(std::string s) {
 
 void draw_curve(RenderWindow &window) {
 
-	float step = h / scale / 2.0;                 //длина деления системы координат в пикселях
-	float p = int((scale - 1) / lines_num + 1);   //математическая длина деления системы координат
-	int pix_step = 2;                             //расстояние в пикселях между соседними отсчётами графика
-	int steps_num = h / pix_step;                 //общее число отчсётов
+	float step = h / scale / 2.0;                 //coordinate system division length in pixels
+	float p = int((scale - 1) / lines_num + 1);   //mathematical coordinate system division length
+	int pix_step = 2;                             //distance in pixels between adjacent chart readings
+	int steps_num = h / pix_step;                 //total number of readings
 
-	std::vector<float> points(definition);               //массив значений одного отсчёта   
-	std::vector<std::vector<float>> sections(steps_num + 1); //массив всех отсчётов
+	std::vector<float> points(definition);               //array of values вЂ‹вЂ‹of one sample 
+	std::vector<std::vector<float>> sections(steps_num + 1); //array of all readings
 
-	//инициализация массива отсчётов
+	//readout array initialization
 	for (int i = 0; i < definition; i++) {
 		points[i] = 0.0;
 	}
@@ -359,15 +359,15 @@ void draw_curve(RenderWindow &window) {
 		sections[i] = points;
 	}
 
-	//определение границ построения
-	//математические координаты грациц
+	//definition of construction boundaries
+	//math coordinates
 
 	float x_begin = (0 - c.x) / (step);
 	float y_begin = (c.y - h) / (step);
 	float x_end = (h - c.x) / (step);
 	float y_end = (c.y - 0) / (step);
 
-	//рисование по горизонтали
+	//drawing horizontally
 
 	float x, y, i, j, Fxy, pr_Fxy = 0, pr_pr_Fxy, pr_x = 0, pr_y = h, r = 0, angle = 0;
 	float x_step = (x_end - x_begin) / float(steps_num);
@@ -419,7 +419,7 @@ void draw_curve(RenderWindow &window) {
 	}
 
 	RectangleShape line(Vector2f(1.0, 1.0));
-	float th = 4;//толщина линии
+	float th = 4;//line thickness
 	line.setOrigin(0.0, th / 2);
 	line.setFillColor(Color(255, 0, 0));
 	for (i = 1; pr_x < h - pix_step; i++, pr_x += pix_step) {
@@ -447,7 +447,7 @@ void draw_curve(RenderWindow &window) {
 		}
 	}
 
-	//рисование по вертикали
+	//vertical drawing
 
 	x_step = (x_end - x_begin) / float(definition);
 	y_step = (y_end - y_begin) / float(steps_num);

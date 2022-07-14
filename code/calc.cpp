@@ -72,7 +72,7 @@ bool is_digit(char d) {
 	}
 	return false;
 }
-//переход к следующему символу выражения
+//go to the next symbol of expression
 void next_lexem() {
 	if ((str == &s[0] && *str == '-') || (cur_lex == open && *str == '-')) {
 		str++;
@@ -248,7 +248,8 @@ void next_lexem() {
 	}
 	str++;
 }
-//создать слагаемое
+//this function returns pointer to the node of expression summand
+//summand means that it sould be connected by plus or minuse to another summands of expression
 tree_node * create_summand(tree_node *left_mul) {
 	tree_node *node = new tree_node;
 	node->type = cur_lex;
@@ -386,7 +387,7 @@ tree_node * create_summand(tree_node *left_mul) {
 	return node;
 }
 
-//создать выражение
+//this function returns pointer on the root node of all expression
 tree_node * create_expression(tree_node *left_summand) {
 	tree_node *node = new tree_node;
 	tree_node *null_node = new tree_node;
@@ -407,7 +408,7 @@ tree_node * create_expression(tree_node *left_summand) {
 	}
 	return node;
 }
-//перевод из дерева в обратную польскую запись
+//retranslate binary tree of expression to reverse polish notation
 void order(tree_node *node) {
 	if (node->left) {
 		order(node->left);
@@ -547,7 +548,7 @@ void order(tree_node *node) {
 	}
 	//===================
 }
-//алгоритм стекового калькулятора
+//algorithm of stack calculator
 float calculate() {
 	op_cur = op_null;
 	while (op_cur != op_last) {
