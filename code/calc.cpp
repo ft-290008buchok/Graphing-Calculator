@@ -249,7 +249,7 @@ void next_lexem() {
 	str++;
 }
 //this function returns pointer to the node of expression summand
-//summand means that it sould be connected by plus or minuse to another summands of expression
+//summand means that it should be connected by plus or minuse to another summands of expression
 tree_node * create_summand(tree_node *left_mul) {
 	tree_node *node = new tree_node;
 	node->type = cur_lex;
