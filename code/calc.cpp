@@ -35,7 +35,7 @@ class tree_node {
 public:
 	tree_node *left;
 	tree_node *right;
-	float number = 0;
+	double number = 0;
 	int type = 0;
 	std::queue<int> function_type;
 	bool minuse_var = false;
@@ -43,10 +43,10 @@ public:
 };
 class operation {
 public:
-	float number;
+	double number;
 	int type;
 	bool minuse_value = false;
-	float(*f)(float) = NULL;
+	double(*f)(double) = NULL;
 };
 
 std::vector<operation> V;
@@ -57,12 +57,12 @@ void next_lexem();
 tree_node * create_summand(tree_node *);
 tree_node * create_expression(tree_node *);
 void order(tree_node *);
-float m_sin(float);
-float m_cos(float);
-float m_tan(float);
-float ctan(float);
-float m_ctan(float);
-float get_minuse(float);
+double m_sin(double);
+double m_cos(double);
+double m_tan(double);
+double ctan(double);
+double m_ctan(double);
+double get_minuse(double);
 
 bool is_digit(char d) {
 	for (int i = 0; i < 10; i++) {
@@ -652,22 +652,22 @@ float calculate() {
 	}
 	return a;
 }
-float m_sin(float a) {
+double m_sin(double a) {
 	return -sin(a);
 }
-float m_cos(float a) {
+double m_cos(double a) {
 	return -cos(a);
 }
-float m_tan(float a) {
+double m_tan(double a) {
 	return -tan(a);
 }
-float ctan(float a) {
+double ctan(double a) {
 	return cos(a) / sin(a);
 }
-float m_ctan(float a) {
+double m_ctan(double a) {
 	return -(cos(a) / sin(a));
 }
-float get_minuse(float a) {
+double get_minuse(double a) {
 	return -a;
 }
 void processing_expr(std::string ex){

@@ -31,8 +31,8 @@ int definition = 1000;                        //number of steps for enumeration 
 //центр системы координат
 struct centre {
 public:
-	float x = h / 2.0;
-	float y = h / 2.0; coordinate system center
+	double x = h / 2.0;
+	double y = h / 2.0; //coordinate system center
 };
 centre c;
 
