@@ -1,13 +1,13 @@
 # graphic-calculator
   
-Это приложение имеет минимальный интерфейс (по сути оно является чистым бэкэндом), оно будет интересно тем, кто хочет познакомиться с одним из способов реализации графического калькулятора и разобраться в алгоритме его работы. Графический калькулятор это приложение, которое строит график математической зависимости. Данный калькулятор строит график двухмерной кривой, заданной уравнением с двумя неизвестными. Например, график уравнения x^4 + y^4 = x^2 + y * sin(x), построенного в этой программе, будет выглядеть вот так.   
+This application has a minimal interface (in fact, it is a pure backend), it will be of interest to those who want to get acquainted with one of the ways to implement a graphing calculator and understand the algorithm of its work. Graphing Calculator is an application that plots mathematical dependencies. This calculator plots a two-dimensional curve given by an equation with two unknowns. For example, the graph of the equation x^4 + y^4 = x^2 + y * sin(x), built in this program, will look like this.   
 ![изображение](https://user-images.githubusercontent.com/71639489/179417935-db67870f-256e-4c4f-ac59-b7c47c3a3925.png)   
 
-# Установка   
+# Installation   
 
-Для крмпиляции этого проекта предпочтительно использовать MS Visual Studio не старше VS-2015. Достаточно создать пустой проект консольного приложения C++. В папке code содержатся 4 файла arial.ttf, calc.cpp, calc.h и main.cpp, все эти файлы необходимо скопировать в корневой каталог проекта. Файл main.cpp содержит код основной программы, calc.h и calc.cpp это файл загаловка и файл реализации вспомогательного модуля проекта, а arial.ttf является служебным файлом программы. Так же для работы программы необходимо скачать и интегрировать в проект графическую библиотеку SFML, руководство по установке можно найти здесь [https://habr.com/ru/post/278977/]. Когда все файлы скопированны и проект настроен, можно запускать процесс компиляции через меню Visual Studio или комбинацией "Ctrl + F5".   
+To compile this project, it is preferable to use MS Visual Studio no older than VS-2015. It is enough to create an empty C++ console application project. The code folder contains 4 files arial.ttf, calc.cpp, calc.h and main.cpp, all these files must be copied to the project root directory. The main.cpp file contains the main program code, calc.h and calc.cpp are the header file and the implementation file of the auxiliary project module, and arial.ttf is the program service file. Also, for the program to work, you need to download and integrate the SFML graphic library into the project, the installation guide can be found here [https://habr.com/en/post/278977/]. When all files are copied and the project is set up, you can start the compilation process through the Visual Studio menu or with the "Ctrl + F5" combination.  
 
-# Использование   
+# Usage   
 
-Когда компиляция завершится, появится простое окно консоли, в котором можно ввести выражение кривой и нажать "Enter". Выражение может содержать только латинские символы "x", "y", цифпы, разделительную точку для вещественных чисел ".", знаки "+", "-", "*", "/", круглые скобки "(", ")", знак равно "=" и обозначения стандартных тригонометрических функций sin, cos, tg, ctg. Выражение не должно содержать пробелы.   
-В новом окне отобразится график кривой. График масштабируется колёсиком мыши.   
+When compilation is complete, a simple console window will appear where you can type in a curve expression and press "Enter". The expression can contain only latin characters "x", "y", digits, separating dot for real numbers ".", signs "+", "-", "*", "/", parentheses "(", ") ", sign equals "=" and designations of standard trigonometric functions sin, cos, tg, ctg. The expression must not contain spaces.   
+The curve graph will be displayed in a new window. The graph is zoomed with the mouse wheel.   
