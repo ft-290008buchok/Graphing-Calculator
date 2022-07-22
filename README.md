@@ -1,4 +1,4 @@
-# Graphing-Calculator   
+# Graphing-Calculator
 
 <img src="https://user-images.githubusercontent.com/71639489/180384005-1258eb8b-8c78-4b50-8f4b-2f6898f646ec.png" width="200" height="200" />
 <img src="https://user-images.githubusercontent.com/71639489/180300318-10928157-7a01-44de-a873-f3775371101a.gif" width="200" height="200" />   
