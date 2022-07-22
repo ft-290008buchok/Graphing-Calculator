@@ -1,8 +1,8 @@
 # Graphing-Calculator   
 
 <img src="https://user-images.githubusercontent.com/71639489/180384005-1258eb8b-8c78-4b50-8f4b-2f6898f646ec.png" width="200" height="200" 
-     img src="https://user-images.githubusercontent.com/71639489/180300318-10928157-7a01-44de-a873-f3775371101a.gif" width="200" height="200"/>
-<img src="https://user-images.githubusercontent.com/71639489/180300318-10928157-7a01-44de-a873-f3775371101a.gif" width="200" height="200" />
+     img src="https://user-images.githubusercontent.com/71639489/180300318-10928157-7a01-44de-a873-f3775371101a.gif" width="200" height="200"/>   
+<img src="https://user-images.githubusercontent.com/71639489/180300318-10928157-7a01-44de-a873-f3775371101a.gif" width="200" height="200" />   
 This application has a minimal interface (in fact, it is a pure backend), it will be of interest to those who want to get acquainted with one of the ways to implement a graphing calculator and understand the algorithm of its work. But you can also download release and run the application.   
 #   
 Graphing Calculator is an application that plots mathematical dependencies. This calculator plots a two-dimensional curve given by an equation with two unknowns. For example, the graph of the equation x^4 + y^4 = x^2 + y * sin(x), built in this program, will look like this.   
