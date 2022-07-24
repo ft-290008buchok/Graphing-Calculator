@@ -1,9 +1,8 @@
 # Graphing-Calculator   
 
 <img src="https://user-images.githubusercontent.com/71639489/180384005-1258eb8b-8c78-4b50-8f4b-2f6898f646ec.png" width="200" height="200"  />
-<img src="https://user-images.githubusercontent.com/71639489/180649236-fbd4f159-e365-4658-9810-2e7b7ee56654.gif
-" width="200" height="200" />   
-![Demonstration](https://user-images.githubusercontent.com/71639489/180649316-55fd02e2-1ec9-409a-b7ca-0e8989b28c20.gif)
+<img src="https://user-images.githubusercontent.com/71639489/180649236-fbd4f159-e365-4658-9810-2e7b7ee56654.gif" width="200" height="200" />   
+
 
 This application has a minimal interface (in fact, it is a pure backend), it will be of interest to those who want to get acquainted with one of the ways to implement a graphing calculator and understand the algorithm of its work. But you can also download release and run the application.   
 #   
