@@ -9,8 +9,3 @@ The expression can contain only latin characters "x", "y", digits, separating do
 You can zoom the graph with the mouse wheel.   
 For example, the graph of the equation (x^4) + (y^4) = (x^2) + y * sin(x), built in this program, will look like this.   
 <img src="https://user-images.githubusercontent.com/71639489/181693517-bbd2573d-658a-4226-b8c9-254a3f63b78c.png" width="200" height="200"  />     
-
-# Temp   
-
-
-sometext
