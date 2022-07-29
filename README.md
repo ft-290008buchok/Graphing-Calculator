@@ -7,5 +7,6 @@
 
 When you run the application a simple console window will appear where you can type in a curve expression and press "Enter". The expression can contain only latin characters "x", "y", digits, separating dot for real numbers ".", signs "+", "-", "*", "/", parentheses "(", ") ", the sign of exponentiation "^" (an expression of the form x^y should be taken in parentheses (x^y)),  sign equals "=" and designations of standard trigonometric functions sin, cos, tg, ctg. The expression must not contain spaces.   
 For example, the graph of the equation (x^4) + (y^4) = (x^2) + y * sin(x), built in this program, will look like this.   
-<img src="https://user-images.githubusercontent.com/71639489/179417935-db67870f-256e-4c4f-ac59-b7c47c3a3925.png" width="200" height="200"  />     
+<img src="https://user-images.githubusercontent.com/71639489/181693517-bbd2573d-658a-4226-b8c9-254a3f63b78c.png" width="200" height="200"  />     
+
 You can zoom the graph with the mouse wheel.   
