@@ -12,4 +12,4 @@ For example, the graph of the equation (x^4) + (y^4) = (x^2) + y * sin(x), built
 
 # Download release for windows
 [direct download link](https://github.com/ft-290008buchok/Math-Plotter/releases/download/Release/Graphing-Calculator.zip)
-[link to the release]
+[link to the release](https://github.com/ft-290008buchok/Math-Plotter/releases)
