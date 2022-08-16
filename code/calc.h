@@ -3,9 +3,10 @@
 #include<string>
 #include<vector>
 #include<queue>
+#include <stack>
 #include<math.h>
 
 void processing_expr(std::string);
-float calculate();
-void set_x(float &var);
-void set_y(float &var);
+double calculate();
+void set_x(double &var);
+void set_y(double &var);
