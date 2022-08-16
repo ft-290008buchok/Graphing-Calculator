@@ -26,15 +26,15 @@ const int m_cotangence = 21;
 const char digits[11] = "0123456789";
 
 int cur_lex, cur_type;
-float val, a, x = 0, y = 0, b;
+double val, a, x = 0, y = 0, b;
 char* str;
 std::string s;
 bool first_minuse = false;
 
 class tree_node {
 public:
-	tree_node *left;
-	tree_node *right;
+	tree_node *left = NULL;
+	tree_node *right = NULL;
 	double number = 0;
 	int type = 0;
 	std::queue<int> function_type;
@@ -43,14 +43,15 @@ public:
 };
 class operation {
 public:
-	double number;
-	int type;
+	double number = 0;
+	int type = -1;
 	bool minuse_value = false;
 	double(*f)(double) = NULL;
 };
 
 std::vector<operation> V;
 operation *op_null, *op_cur, *op_last;
+std::stack<double> st;
 
 bool is_digit(char);
 void next_lexem();
@@ -72,7 +73,7 @@ bool is_digit(char d) {
 	}
 	return false;
 }
-//go to the next symbol of expression
+//переход к следующему символу выражения
 void next_lexem() {
 	if ((str == &s[0] && *str == '-') || (cur_lex == open && *str == '-')) {
 		str++;
@@ -248,8 +249,7 @@ void next_lexem() {
 	}
 	str++;
 }
-//this function returns pointer to the node of expression summand
-//summand means that it should be connected by plus or minuse to another summands of expression
+//создать слагаемое
 tree_node * create_summand(tree_node *left_mul) {
 	tree_node *node = new tree_node;
 	node->type = cur_lex;
@@ -387,7 +387,7 @@ tree_node * create_summand(tree_node *left_mul) {
 	return node;
 }
 
-//this function returns pointer on the root node of all expression
+//создать выражение
 tree_node * create_expression(tree_node *left_summand) {
 	tree_node *node = new tree_node;
 	tree_node *null_node = new tree_node;
@@ -408,7 +408,7 @@ tree_node * create_expression(tree_node *left_summand) {
 	}
 	return node;
 }
-//retranslate binary tree of expression to reverse polish notation
+//перевод из дерева в обратную польскую запись
 void order(tree_node *node) {
 	if (node->left) {
 		order(node->left);
@@ -548,108 +548,96 @@ void order(tree_node *node) {
 	}
 	//===================
 }
-//algorithm of stack calculator
-float calculate() {
+//алгоритм стекового калькулятора
+double calculate() {
 	op_cur = op_null;
 	while (op_cur != op_last) {
 		cur_type = op_cur->type;
 		if (cur_type == num) {
 			a = op_cur->number;
-			__asm {
-				push a
-			}
+			
+			st.push(a);
 		}
 		else if (cur_type == X) {
 			a = op_cur->minuse_value ? -x : x;
-			__asm {
-				push a
-			}
+			
+			st.push(a);
 		}
 		else if (cur_type == Y) {
 			a = op_cur->minuse_value ? -y : y;
-			__asm {
-				push a
-			}
+			
+			st.push(a);
 		}
 		else if (cur_type == pluss) {
-			__asm {
-				pop a
-			}
-			b = a;
-			__asm {
-				pop a
-			}
+			
+			b = st.top();
+			st.pop();
+
+			a = st.top();
+			st.pop();
+
 			a = a + b;
-			__asm {
-				push a
-			}
+
+			st.push(a);
 		}
 		else if (cur_type == minuse) {
-			__asm {
-				pop a
-			}
-			b = a;
-			__asm {
-				pop a
-			}
+			b = st.top();
+			st.pop();
+
+			a = st.top();
+			st.pop();
+
 			a = a - b;
-			__asm {
-				push a
-			}
+
+			st.push(a);
 		}
 		else if (cur_type == mul) {
-			__asm {
-				pop a
-			}
-			b = a;
-			__asm {
-				pop a
-			}
+			b = st.top();
+			st.pop();
+
+			a = st.top();
+			st.pop();
+
 			a = a * b;
-			__asm {
-				push a
-			}
+
+			st.push(a);
 		}
 		else if (cur_type == divv) {
-			__asm {
-				pop a
-			}
-			b = a;
-			__asm {
-				pop a
-			}
+			b = st.top();
+			st.pop();
+
+			a = st.top();
+			st.pop();
+
 			a = a / b;
-			__asm {
-				push a
-			}
+
+			st.push(a);
 		}
 		else if (cur_type == function) {
-			__asm {
-				pop a
-			}
+			a = st.top();
+			st.pop();
+
 			a = (*op_cur->f)(a);
-			__asm {
-				push a
-			}
+
+			st.push(a);
 		}
 		else if (cur_type == power) {
-			__asm {
-				pop a
-			}
-			b = a;
-			__asm {
-				pop a
-			}
+			b = st.top();
+			st.pop();
+
+			a = st.top();
+			st.pop();
+
 			a = pow(a, b);
-			__asm {
-				push a
-			}
+
+			st.push(a);
 		}
 		op_cur++;
 	}
-	__asm {
-		pop a
-	}
+
+	a = st.top();
+	st.pop();
+
 	return a;
 }
 double m_sin(double a) {
@@ -681,9 +669,9 @@ void processing_expr(std::string ex){
 	op_last = &V[V.size() - 1];
 	op_last++;
 }
-void set_x(float &var) {
+void set_x(double&var) {
 	x = var;
 }
-void set_y(float &var) {
+void set_y(double&var) {
 	y = var;
 }
