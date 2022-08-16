@@ -1,4 +1,4 @@
-﻿#define _USE_MATH_DEFINES
+#define _USE_MATH_DEFINES
 #include<iostream>
 #include<ctime>
 #include<string>
@@ -36,11 +36,11 @@ public:
 };
 centre c;
 
-void draw_coordinate_system(RenderWindow &);
+void draw_coordinate_system(RenderWindow&);
 std::string str(float);
-void focal_scaling(RenderWindow &, int);
+void focal_scaling(RenderWindow&, int);
 std::string prepare_str(std::string);
-void draw_curve(RenderWindow &);
+void draw_curve(RenderWindow&);
 
 int main()
 {
@@ -48,7 +48,7 @@ int main()
 	std::string s;
 	std::cin >> s;
 
-	
+
 
 	//string formatting
 	//getting a function of 2 variables
@@ -113,7 +113,7 @@ int main()
 }
 
 
-void draw_coordinate_system(RenderWindow &window) {
+void draw_coordinate_system(RenderWindow& window) {
 	float x_pos = c.x, y_pos = c.y;
 	RectangleShape line(Vector2f(1.f, h / 2.0));
 	Font font;
@@ -271,7 +271,7 @@ std::string str(float n) {
 
 
 
-void focal_scaling(RenderWindow &window, int delta) {
+void focal_scaling(RenderWindow& window, int delta) {
 	window.clear();
 	Vector2i mouse_pos = Mouse::getPosition(window);
 	float math_rx = (mouse_pos.x - c.x) / (step);
@@ -316,7 +316,7 @@ std::string prepare_str(std::string s) {
 		f = true;
 	}
 	std::vector<int> br;
-	char *symb = &l_s[0];
+	char* symb = &l_s[0];
 	while (*symb != '\0') {
 		if (*symb == '(') {
 			br.push_back(1);
@@ -341,7 +341,7 @@ std::string prepare_str(std::string s) {
 }
 
 
-void draw_curve(RenderWindow &window) {
+void draw_curve(RenderWindow& window) {
 
 	float step = h / scale / 2.0;                 //coordinate system division length in pixels
 	float p = int((scale - 1) / lines_num + 1);   //mathematical coordinate system division length
@@ -369,11 +369,11 @@ void draw_curve(RenderWindow &window) {
 
 	//drawing horizontally
 
-	float x, y, i, j, Fxy, pr_Fxy = 0, pr_pr_Fxy, pr_x = 0, pr_y = h, r = 0, angle = 0;
+	double x, y, i, j, Fxy, pr_Fxy = 0, pr_pr_Fxy, pr_x = 0, pr_y = h, r = 0, angle = 0;
 	float x_step = (x_end - x_begin) / float(steps_num);
 	float y_step = (y_end - y_begin) / float(definition);
 
-	float *point, *pr_point;
+	float* point, * pr_point;
 
 	for (i = 0, x = x_begin; i < steps_num; i++, x += x_step) {
 		point = &sections[i][0];
